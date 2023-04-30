@@ -1,6 +1,16 @@
+
 spring:
   application:
     name: spring-msa-mail
+  mail:
+    host: smtp.naver.com
+    port: 465
+    username: "your email"
+    password: "your password"
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
+      mail.smtp.ssl.trust: smtp.naver.com
 
   h2:
     console:
@@ -45,3 +55,5 @@ security:
     resource:
       jwt:
         key-value: jwt_key_value
+server:
+  port: 8081

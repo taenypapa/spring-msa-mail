@@ -1,5 +1,6 @@
 package com.agile.demo.biz.mail;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +18,7 @@ import javax.mail.internet.MimeMessage;
 @RestController
 @RequestMapping("/api/mails")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class MailController {
 
     private final JavaMailSender mailSender;

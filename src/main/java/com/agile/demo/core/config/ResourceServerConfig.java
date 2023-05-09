@@ -13,6 +13,24 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+	String [] matchers = {
+			"/swagger-ui/**",
+			"/swagger-ui.html",
+			"/swagger-resources/**",
+			"/v3/api-docs/**",
+			"/v2/api-docs/**",
+			"/tokens",
+			"/webjars/**",
+			"/h2-console/**",
+			"/**/swagger-ui/**",
+			"/**/swagger-ui.html",
+			"/**/swagger-resources/**",
+			"/**/v3/api-docs/**",
+			"/**/v2/api-docs/**",
+			"/**/api-docs/**",
+			"/**/webjars/**",
+			"/management/documents/files/downloads/**"
+	};
 
 	@Autowired
 	private Environment environment;
@@ -27,6 +45,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		// h2 데이터를 확인하기위해 h2-console url의 권한을 permitAll으로 바꾸어 줍니다.
 
 		http.authorizeRequests()
+				.antMatchers(matchers).permitAll()
 				.antMatchers("/api/**").authenticated();
 
 		http.cors().disable();
